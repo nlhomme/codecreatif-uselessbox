@@ -22,18 +22,38 @@
   https://www.arduino.cc/en/Tutorial/BuiltInExamples/Blink
 */
 
+// Set switch's pin
+const int switchPin = 2;
+int switchState = 0;
+
 // the setup function runs once when you press reset or power the board
 void setup() {
+  Serial.begin(9600);
   // initialize digital pin LED_BUILTIN as an output.
   pinMode(LED_BUILTIN, OUTPUT);
+
+  // initialialize the switch as an input
+  pinMode(switchPin, INPUT);
 }
 
 // the loop function runs over and over again forever
 void loop() {
-  digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
-  delay(1000);                       // wait for a second
-  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
-  delay(1000);                       // wait for a second
+  // read the state of the switch's value
+  switchState = digitalRead(switchPin);
+  
+  // display the result
+  Serial.println(switchState);
+  
+  // if button pressed, switchState is HIGH
+  if (switchState == HIGH) {
+    // stop the program
+    exit(0);
+  } else {
+    digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
+    delay(1000);                       // wait for a second
+    digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+    delay(1000);                       // wait for a second
+  }
+  // TO-DO: try that code with another button
+  // Circuit URL: https://www.arduino.cc/wiki/static/73702ee121860fa04c7f6db5bc77183b/29007/circuit.png
 }
-
-//To do: ajouter un bouton pour arrêter le programme en cas d'impulsion
