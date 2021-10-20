@@ -33,7 +33,8 @@ void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
 
   // initialialize the switch as an input
-  pinMode(switchPin, INPUT);
+  pinMode(switchPin, INPUT_PULLUP);
+  // signal goes from pin 2 => GND
 }
 
 // the loop function runs over and over again forever
@@ -55,5 +56,5 @@ void loop() {
     delay(1000);                       // wait for a second
   }
   // TO-DO: try that code with another button
-  // Circuit URL: https://www.arduino.cc/wiki/static/73702ee121860fa04c7f6db5bc77183b/29007/circuit.png
+  // Circuit URL:https://www.locoduino.org/spip.php?article122
 }
