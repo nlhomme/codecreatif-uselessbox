@@ -6,7 +6,7 @@ Il consiste en la création d'une Useless Box ("boite inutile" en anglais) simil
 [![](https://img.youtube.com/vi/I0KWWJGUkHE/0.jpg)](https://www.youtube.com/watch?v=I0KWWJGUkHE)
 <em>Cliquer sur l'image pour ouvrir sur YouTube</em>
 
-Cette boite Arduino
+Cette boite inutile fonctionnera à base d'Arduino UNO.
 
 Outre le code Arduino, ce repo contiendra entre autres:
 * La liste des composants utilisés
