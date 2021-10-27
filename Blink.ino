@@ -1,60 +1,54 @@
 /*
   Blink
 
-  Turns an LED on for one second, then off for one second, repeatedly.
+  Turns an LED on for one second, then off for one second, repeatedly while the button is not pressed.
 
-  Most Arduinos have an on-board LED you can control. On the UNO, MEGA and ZERO
-  it is attached to digital pin 13, on MKR1000 on pin 6. LED_BUILTIN is set to
-  the correct LED pin independent of which board is used.
-  If you want to know what pin the on-board LED is connected to on your Arduino
-  model, check the Technical Specs of your board at:
-  https://www.arduino.cc/en/Main/Products
+  The signal goes from pin 2 to GND, passing through a button
 
-  modified 8 May 2014
-  by Scott Fitzgerald
-  modified 2 Sep 2016
-  by Arturo Guadalupi
-  modified 8 Sep 2016
-  by Colby Newman
-
-  This example code is in the public domain.
-
-  https://www.arduino.cc/en/Tutorial/BuiltInExamples/Blink
+  This code is based on the article below:
+  https://www.arduino.cc/en/Tutorial/BuiltInExamples/InputPullupSerial
 */
 
-// Set switch's pin
-const int switchPin = 2;
-int switchState = 0;
+// VARIABLES
+// Setting the button's pin and its default value
+const int buttonPin = 2;
+int buttonState = 0;
 
-// the setup function runs once when you press reset or power the board
+
+// SETUP
 void setup() {
+  // Initializing the serial communication
   Serial.begin(9600);
-  // initialize digital pin LED_BUILTIN as an output.
+  
+  // Initializing digital pin LED_BUILTIN as an output.
   pinMode(LED_BUILTIN, OUTPUT);
 
-  // initialialize the switch as an input
-  pinMode(switchPin, INPUT_PULLUP);
-  // signal goes from pin 2 => GND
+  // Initialializing the button (on pin 2) as an input
+  pinMode(buttonPin, INPUT_PULLUP);
 }
 
-// the loop function runs over and over again forever
+
+// START
 void loop() {
-  // read the state of the switch's value
-  switchState = digitalRead(switchPin);
+  // Reading the state of the button's value
+  buttonState = digitalRead(buttonPin);
   
-  // display the result
-  Serial.println(switchState);
+  // Displaying the result (for DEBUG)
+  //Serial.println(buttonState);
   
-  // if button pressed, switchState is HIGH
-  if (switchState == HIGH) {
-    // stop the program
+  // The "INPUT_PULLUP" parameter reverts the button's logic
+  // So if button pressed, buttonState is LOW
+  if (buttonState == LOW) {
+    // Exiting the program
+    Serial.println("The button has been pressed, exiting...");
+    delay(1000);
     exit(0);
   } else {
     digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
+    Serial.println("LED IS ON...");
     delay(1000);                       // wait for a second
     digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+    Serial.println("LED IS OFF...");
     delay(1000);                       // wait for a second
   }
-  // TO-DO: try that code with another button
-  // Circuit URL:https://www.locoduino.org/spip.php?article122
 }
