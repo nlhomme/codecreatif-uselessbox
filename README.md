@@ -3,7 +3,7 @@
 Ce projet est réalisé dans le cadre des [Sessions du Code Créatif](https://www.stereolux.org/sessions-du-code-creatif-0)
 
 Il consiste en la création d'une Useless Box ("boite inutile" en anglais) similaire à celle-ci:
-[![](https://img.youtube.com/vi/I0KWWJGUkHE/0.jpg)](https://www.youtube.com/watch?v=I0KWWJGUkHE)
+[![](https://img.youtube.com/vi/I0KWWJGUkHE/0.jpg)](https://www.youtube.com/watch?v=I0KWWJGUkHE)<br />
 <em>Cliquer sur l'image pour ouvrir sur YouTube</em>
 
 Cette boite inutile fonctionnera à base d'Arduino UNO.
