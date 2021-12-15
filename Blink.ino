@@ -11,10 +11,6 @@
 
   Blink a led without delay:
   https://www.arduino.cc/en/Tutorial/BuiltInExamples/BlinkWithoutDelay
-
-  
-  https://www.arduino.cc/reference/en/language/functions/external-interrupts/attachinterrupt/
-  
 */
 
 
