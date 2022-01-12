@@ -1,18 +1,24 @@
 /*
-  Blink
+  Servo control
+  (This file is named "Blink" due to the Arduino software restrictions)
 
-  Turns an LED on for one second, then off for one second, repeatedly while the switch is toggled on.
+  If the switch is toggled on, the servo motor rotate in a way during a short time, then the other way during the same amount of time.
   If not, the program switch to a standby mode, waiting for the switch to be toggled on.
   
-  The signal goes from pin 2 to GND, passing through a switch
+  The switch signal goes from pin 2 to GND, passing through a switch
 
   This code is based on the article below:
   https://www.arduino.cc/en/Tutorial/BuiltInExamples/InputPullupSerial
 
   Blink a led without delay:
   https://www.arduino.cc/en/Tutorial/BuiltInExamples/BlinkWithoutDelay
+
+  Controlling a servo motor:
+  https://www.carnetdumaker.net/articles/controler-un-servomoteur-avec-une-carte-arduino-genuino/
 */
 
+// LIBRARIES
+#include <Servo.h>
 
 // VARIABLES
 // Setting the switch's pin where the switch is linked and it's state
@@ -25,6 +31,10 @@ unsigned long previousMillis = 0;
 // Set the blink interval (in ms)
 const long interval = 1000;
 
+// Declaring the servo motor and the working angles
+Servo servoMotor;
+const int servoAngleStart = 0;
+const int servoAngleEnd = 180;
 
 // SETUP
 void setup() {
@@ -36,11 +46,18 @@ void setup() {
 
   // Initialializing the switch (on pin 2) as an input
   pinMode(switchPin, INPUT_PULLUP);
+
+  // Initializing the Servo library
+  servoMotor.attach(9);
 }
 
 
 // START
 void loop() {
+  // Resetting the servo motor
+  //Serial.println("Initializing");
+  //servoMotor.write(servoAngleStart);
+  
   // Reading the state of the switch
   switchState = digitalRead(switchPin);
   
@@ -70,9 +87,11 @@ void loop() {
       if (digitalRead(LED_BUILTIN) == LOW) {
         digitalWrite(LED_BUILTIN, HIGH);
         Serial.println("LED IS ON");
+        servoMotor.write(servoAngleEnd);
       } else {
         digitalWrite(LED_BUILTIN, LOW);
         Serial.println("LED IS OFF");
+        servoMotor.write(servoAngleStart);
       } 
     }
   }
