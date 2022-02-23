@@ -11,4 +11,7 @@ En effet, la seule chose que nous ignorons c'est l'angle auquel il faudra entra�
 
 Pour le savoir, nous avons besoin d'un boîtier fonctionnel, dans lequel nous aurons fixés nos composants, dont le servomoteur et le doigt
 (doc a poursuivre...)
-![Image](readme-files/corgi.jpg) 
+![Image](readme-files/corgi.jpg)
+
+To do:
+Regénerer la boïte et couvercle, mais avec un épaisseur en mm
